@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Schweigen logo" src="https://uploads-ssl.webflow.com/6007b4af01b37638d431e8f4/600f38e565837a5fd9994f85_Primary.svg" />
+    <HelloWorld msg="Schweigen Commercial Portal"/>
   </div>
 </template>
 

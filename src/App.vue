@@ -5,20 +5,17 @@
     {{ counter }}
   </div>
   <router-view/>
- <img alt="Schweigen logo" src="https://uploads-ssl.webflow.com/6007b4af01b37638d431e8f4/600f38e565837a5fd9994f85_Primary.svg" />
-
-
+ 
   <div class="section">
     <div class="container">
       <div class="wrapper-m">
         <div class="w-layout-grid grid-long-content-2 s-x-48">
           <Sidebar></Sidebar>
-        </div>
-        <div class="page-content">
-
-          <DownloadsTable v-if="!loading" v-bind:downloads="downloads"></DownloadsTable>
-          <div v-if="loading">
+          <div class="page-content">
+            <DownloadsTable v-if="!loading" v-bind:downloads="downloads"></DownloadsTable>
+            <div v-if="loading">
               <div class="s-p-48">Loading...</div>
+            </div>
           </div>
         </div>
       </div>
