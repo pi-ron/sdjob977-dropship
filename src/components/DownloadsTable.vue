@@ -1,6 +1,6 @@
 <template>
   <h2>Downloads</h2>
-  <!-- {{ downloads[0] }} -->
+  
   <hr />
   <div class="table">
     <div class="table-head">
@@ -19,6 +19,7 @@
     </div>
     <div class="table-body">
       <div class="table-row"  v-for="download in downloads">
+        
         <div class="table-col">
           <span>{{ download.fields["display-name"] }}</span>
           
