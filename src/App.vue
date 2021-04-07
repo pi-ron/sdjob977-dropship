@@ -2,7 +2,7 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-    {{ sort }}
+    {{ sortMethod }}
   </div>
   <router-view/>
  
@@ -34,7 +34,7 @@
     },
     methods: {
       sortType(event) {
-        this.sort = event
+        this.sortMethod = event
       },
       changeFilterByName(event) {
         this.filterName = event
@@ -46,14 +46,44 @@
         downloads:null,
         offset:null,
         loading:true,
-        sort:'sort default',
-        filterName: null
+        sortMethod:null,
+        filterName: null,
       }
     },
     computed: {
       filteredDownloads: function () {
-        if (this.filterName == null) {return this.downloads} //no filtering
-        var items = this.downloads
+
+        let sortedDownloads = this.downloads
+        
+        if (this.sortMethod == 'alphabetically asc') {
+          
+          sortedDownloads = sortedDownloads.sort((a,b) => {
+          let fa = a.fields['display-name'].toLowerCase(), fb = b.fields['display-name'].toLowerCase();
+          if (fa < fb) {
+            return -1
+          }
+          if (fa > fb) {
+            return 1
+          }
+            return 0
+          })
+        } else if (this.sortMethod == 'alphabetically dsc') {
+
+          sortedDownloads = sortedDownloads.sort((a,b) => {
+          let fa = a.fields['display-name'].toLowerCase(), fb = b.fields['display-name'].toLowerCase();
+          if (fa < fb) {
+            return 1
+          }
+          if (fa > fb) {
+            return -1
+          }
+            return 0
+          })
+        }
+
+        if (this.filterName == null) {return sortedDownloads} //no filtering
+
+        var items = sortedDownloads
         var result = {}
         Object.keys(items).forEach(key => {
           const item = items[key]
@@ -61,15 +91,13 @@
           if (displayName.includes(this.filterName.toLowerCase())) {
             result[key] = item
           }
-        })
+        });
+
+
+
         // console.log(result);
         return result;
       }
-      // filteredDownloads() {
-      //   return this.downloads.filter(item => {
-      //      return item.fields.['display-name'].toLowerCase().indexOf(this.search.toLowerCase()) > -1
-      //   })
-      // }      
     },
     mounted() {
 

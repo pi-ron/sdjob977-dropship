@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar">
-    <button v-on:click="updateSort('Name Ascending')">Sort Name Ascending</button>
-    <button v-on:click="updateSort('Name Descending')">Sort Name Descending</button>
+    <button v-on:click="updateSort('alphabetically asc')">Sort Name Ascending</button>
+    <button v-on:click="updateSort('alphabetically dsc')">Sort Name Descending</button>
     <input v-on:input="updateNameFilter($event.target.value)" type="text" />
   </aside>
 </template>
