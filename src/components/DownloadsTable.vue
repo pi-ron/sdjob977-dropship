@@ -53,8 +53,6 @@ export default {
   data() {
     return {
       columns: ["display-name", "type", "filesize", "file.url"],
-      tableData:this.downloads,
-
       //Example Columns & Data
       // columns: ["erase", "id", "name", "age", "type"],
       // tableData: [
