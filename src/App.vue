@@ -1,21 +1,11 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    {{ sortMethod }}
-  </div>
-  <router-view/>
- 
   <div class="section">
     <div class="container">
       <div class="wrapper-m">
         <div class="w-layout-grid grid-long-content-2 s-x-48">
           <Sidebar @sortBy="sortType" @changeFilterByNameValue="changeFilterByName"></Sidebar>
           <div class="page-content">
-            <DownloadsTable v-if="!loading" v-bind:downloads="filteredDownloads"></DownloadsTable>
-            <div v-if="loading">
-              <div class="s-p-48">Loading...</div>
-            </div>
+            <DownloadsTable v-bind:loading="loading" @sortBy="sortType" v-bind:downloads="filteredDownloads"></DownloadsTable>
           </div>
         </div>
       </div>
@@ -48,6 +38,7 @@
         loading:true,
         sortMethod:null,
         filterName: null,
+        sort: null
       }
     },
     computed: {
@@ -100,6 +91,10 @@
       }
     },
     mounted() {
+
+      this.emitter.on("sort", sortMethod => {
+        this.sortMethod = sortMethod;
+      });
 
       var axiosCreate = this.axios
         .create({

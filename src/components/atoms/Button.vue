@@ -1,5 +1,5 @@
 <template>
-  <a v-bind:class="size" class="button secondary w-inline-block" v-bind:href="href">
+  <a v-bind:class="size, type" class="button w-inline-block" v-bind:href="href">
       <div class="button-text">
           {{ text }}
       </div>
@@ -26,6 +26,10 @@ export default {
       type: String,
       default: "large"
     },
+    type: {
+      type: String,
+      default: "default"
+    },    
     text: {
       default: "Download"
     }
