@@ -1,14 +1,8 @@
 <template>
-  <div class="section">
-    <div class="container">
-      <div class="wrapper-m">
-        <div class="w-layout-grid grid-long-content-2 s-x-48">
-          <Sidebar @sortBy="sortType" @changeFilterByNameValue="changeFilterByName"></Sidebar>
-          <div class="page-content">
-            <DownloadsTable v-bind:loading="loading" @sortBy="sortType" v-bind:downloads="filteredDownloads"></DownloadsTable>
-          </div>
-        </div>
-      </div>
+  <div class="w-layout-grid grid-long-content-2 s-x-48">
+    <Sidebar @sortBy="sortType" @changeFilterByNameValue="changeFilterByName"></Sidebar>
+    <div class="page-content">
+      <DownloadsTable v-bind:loading="loading" @sortBy="sortType" v-bind:downloads="filteredDownloads"></DownloadsTable>
     </div>
   </div>
 </template>
